@@ -79,7 +79,7 @@ public class FragmentRouter implements FragmentRouterProtocol {
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         if (animation != Animation.NON) { fragmentTransaction.setCustomAnimations(enterAnim, exitAnim, popEnterAnim, popExitAnim); }
-        fragmentTransaction.replace(container, fragment, tag.getClass().getCanonicalName());
+        fragmentTransaction.replace(container, fragment, getUniqueString(tag));
         if (addToBackStack) { fragmentTransaction.addToBackStack(null); }
         fragmentTransaction.commit();
     }
@@ -96,6 +96,10 @@ public class FragmentRouter implements FragmentRouterProtocol {
     }
 
     public Fragment getInstance(FragmentManager fragmentManager, FragmentTag tag) {
-        return fragmentManager.findFragmentByTag(tag.getClass().getCanonicalName());
+        return fragmentManager.findFragmentByTag(getUniqueString(tag));
+    }
+
+    private String getUniqueString(FragmentTag tag) {
+        return tag.getClass().getCanonicalName() + "." + String.valueOf(tag);
     }
 }
