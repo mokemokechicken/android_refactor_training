@@ -94,7 +94,7 @@ public class LatestItemFragment extends Fragment {
     @OnItemClick(R.id.qiitaItemListView)
     public void onItemClickQiitaItemListView(int position) {
         Bundle args = new Bundle();
-        args.putString(DetailFragment.URL.toString(), mQiitaItemList.get(position).url);
+        args.putString(DetailFragment.URL, mQiitaItemList.get(position).url);
         FragmentRouter.instance.replace(getFragmentManager(), R.id.container, FragmentTag.DETAIL, args, Animation.SLIDE_IN_BOTTOM);
     }
 
