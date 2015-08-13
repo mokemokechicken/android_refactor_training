@@ -29,10 +29,6 @@ public class FragmentRouter implements FragmentRouterProtocol {
         showcase.put(tag, c);
     }
 
-    private Class get(FragmentTag tag) {
-        return showcase.get(tag);
-    }
-
     public void replace(FragmentManager fragmentManager, @IdRes int container, FragmentTag tag, Bundle args, Animation animation) {
         replace(fragmentManager, container, tag, args, animation, true);
     }
@@ -93,6 +89,10 @@ public class FragmentRouter implements FragmentRouterProtocol {
 
     public Fragment getInstance(FragmentManager fragmentManager, FragmentTag tag) {
         return fragmentManager.findFragmentByTag(getUniqueString(tag));
+    }
+
+    private Class get(FragmentTag tag) {
+        return showcase.get(tag);
     }
 
     private String getUniqueString(FragmentTag tag) {
