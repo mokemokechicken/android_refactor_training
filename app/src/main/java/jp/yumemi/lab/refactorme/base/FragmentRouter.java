@@ -38,15 +38,9 @@ public class FragmentRouter implements FragmentRouterProtocol {
     }
 
     public void replace(FragmentManager fragmentManager, @IdRes int container, FragmentTag tag, Bundle args, Animation animation, boolean addToBackStack) {
-        Fragment fragment = fragmentManager.findFragmentByTag(String.valueOf(tag));
+        Fragment fragment = getInstance(fragmentManager, tag);
         if (fragment == null) {
-            try {
-                Class c = get(tag);
-                fragment = (Fragment)c.newInstance();
-                fragment.setArguments(args);
-            } catch (Exception e) {
-                return;
-            }
+            fragment = newInstance(tag, args);
         }
 
         int enterAnim;
@@ -85,14 +79,16 @@ public class FragmentRouter implements FragmentRouterProtocol {
     }
 
     public Fragment newInstance(FragmentTag tag, Bundle args) {
+        Class c = get(tag);
+        Fragment fragment = null;
         try {
-            Class c = get(tag);
-            Fragment fragment = (Fragment)c.newInstance();
+            fragment = (Fragment)c.newInstance();
             fragment.setArguments(args);
-            return fragment;
         } catch (Exception e) {
-            return null;
+            e.printStackTrace();
+            throw new FragmentCannotInstantiateException();
         }
+        return fragment;
     }
 
     public Fragment getInstance(FragmentManager fragmentManager, FragmentTag tag) {
@@ -103,3 +99,5 @@ public class FragmentRouter implements FragmentRouterProtocol {
         return tag.getClass().getCanonicalName() + "." + String.valueOf(tag);
     }
 }
+
+class FragmentCannotInstantiateException extends RuntimeException {}
