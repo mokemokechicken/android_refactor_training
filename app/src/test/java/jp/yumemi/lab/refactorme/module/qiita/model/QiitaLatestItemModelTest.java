@@ -50,22 +50,11 @@ public class QiitaLatestItemModelTest {
         mTestTarget.load();
     }
 
-    private void BusyStateFalse() {
-        assertFalse(mTestTarget.isBusy());
-    }
-
-    private void BusyStateTrue() {
-        assertTrue(mTestTarget.isBusy());
-    }
-
-    private void FlushBackgroundTasks() {
+    private void andFlushTasks() {
         Robolectric.flushBackgroundThreadScheduler();
-    }
-
-    private void FlushForegroundTasks() {
         Robolectric.flushForegroundThreadScheduler();
     }
-
+    
     private void shouldReceiveLoadedEvent() {
         assertEquals(1, mEventReceived);
     }
@@ -78,24 +67,15 @@ public class QiitaLatestItemModelTest {
 //
 
     @Test
-    public void test_BusyStateFalse_Load_BusyStateTrue_FlushBackgroundTasks_FlushForegroundTasks_BusyStateFalse_shouldReceiveLoadedEvent() {
-        BusyStateFalse();
+    public void test_Load_andFlushTasks_shouldReceiveLoadedEvent() {
         Load();
-        BusyStateTrue();
-        FlushBackgroundTasks();
-        FlushForegroundTasks();
-        BusyStateFalse();
+        andFlushTasks();
         shouldReceiveLoadedEvent();
     }
 
-
-
     private interface Actions {
-        void BusyStateFalse();
         void Load();
-        void BusyStateTrue();
-        void FlushBackgroundTasks();
-        void FlushForegroundTasks();
+        void andFlushTasks();
         void shouldReceiveLoadedEvent();
     }
 }

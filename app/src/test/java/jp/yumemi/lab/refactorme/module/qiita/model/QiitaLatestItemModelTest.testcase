@@ -11,6 +11,6 @@ TESTCASE_DEF['class_name'] = 'QiitaLatestItemModelTest'
 
 TESTCASE_DEF['data'] = SEQ(
     [
-        ['BusyStateFalse', 'Load', 'BusyStateTrue', 'FlushBackgroundTasks', 'FlushForegroundTasks', 'BusyStateFalse', 'shouldReceiveLoadedEvent'],
+        ['Load', 'andFlushTasks', 'shouldReceiveLoadedEvent'],
     ]
 )
