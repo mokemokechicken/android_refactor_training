@@ -4,7 +4,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import jp.yumemi.lab.refactorme.Const;
+import jp.yumemi.lab.refactorme.Environment;
 import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;
 
@@ -20,7 +20,7 @@ public class ApiManager {
 
         // Retrofitのアダプタ
         RestAdapter qiitaRestAdapter = new RestAdapter.Builder()
-                .setEndpoint(Const.QIITA_API_ENDPOINT)
+                .setEndpoint(Environment.QIITA_API_ENDPOINT)
                 .setConverter(new GsonConverter(qiitaJson))
                 .build();
         return qiitaRestAdapter.create(QiitaApiService.class);
