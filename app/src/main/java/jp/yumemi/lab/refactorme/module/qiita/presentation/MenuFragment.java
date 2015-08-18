@@ -8,15 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jp.yumemi.lab.refactorme.android_mvc_sample.R;
 import jp.yumemi.lab.refactorme.base.Animation;
 import jp.yumemi.lab.refactorme.base.FragmentRouter;
+import jp.yumemi.lab.refactorme.module.qiita.entity.QiitaItem;
 
 public class MenuFragment extends Fragment {
+    public static List<QiitaItem> sAndroidItemList = new ArrayList<>();
+    public static int sAndroidItemCount = 0;
 
-    // TODO: Rename and change types and number of parameters
     public static MenuFragment newInstance(String param1, String param2) {
         MenuFragment fragment = new MenuFragment();
         Bundle args = new Bundle();
@@ -43,6 +48,7 @@ public class MenuFragment extends Fragment {
 
     @OnClick(R.id.button_android)
     public void onButtonAndroidClick() {
+        FragmentRouter.instance.replace(getFragmentManager(), R.id.container, FragmentTag.ANDROID_LIST, null, Animation.SLIDE_IN_RIGHT);
     }
 
 }

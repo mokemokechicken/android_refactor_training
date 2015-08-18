@@ -5,10 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class QiitaItem {
 
     @SerializedName("id")
-    public int id;
-
-    @SerializedName("uuid")
-    public String uuid;
+    public String id;
 
     @SerializedName("title")
     public String title;
@@ -18,4 +15,5 @@ public class QiitaItem {
 
     @SerializedName("user")
     public QiitaUser user;
+
 }
