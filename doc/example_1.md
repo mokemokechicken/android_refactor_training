@@ -16,7 +16,7 @@ Qiita記事の簡単なViewerを例に説明します。
 ### 非同期イベントの受け取り方
 
 Menu画面
-<img src="image/menu.png" width="482" />
+<img src="../image/menu.png" width="482" />
 
 において「Android関連記事ボタンをTap」「すぐにBack」を繰り返すとアプリケーションがCrashします。
 ※ 再現しない場合は、遅い通信環境で試してみてください。

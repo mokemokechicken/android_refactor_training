@@ -1,7 +1,8 @@
 Android Refactoring課題
 ==================
 
-Androidの実装でよくリファクタリング対象になるケースを集めました。
+[iOSやandroidアプリ開発のGoodPractice](http://www.slideshare.net/mokemokechicken/iosandroidgoodpractice)
+に近づくための、Androidの実装でよくリファクタリング対象になるケースを集めました。
 
 * 課題１： [Presentation層の非同期イベントとデータ管理](doc/example_1.md)
 
