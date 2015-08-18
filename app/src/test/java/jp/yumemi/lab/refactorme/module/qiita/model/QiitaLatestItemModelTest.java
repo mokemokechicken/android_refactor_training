@@ -1,10 +1,13 @@
 package jp.yumemi.lab.refactorme.module.qiita.model;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+
+import de.greenrobot.event.EventBus;
 
 import static org.junit.Assert.*;
 
@@ -13,17 +16,34 @@ import static org.junit.Assert.*;
  */
 @RunWith(RobolectricTestRunner.class)
 public class QiitaLatestItemModelTest {
+    private EventBus mEventBus;
     private QiitaLatestItemModel mTestTarget;
+    private int mEventReceived = 0;
 
     @Before
     public void setUp() {
-        mTestTarget = new QiitaLatestItemModel();
+        mEventBus = new EventBus();
+        mEventReceived = 0;
+
+        mTestTarget = new QiitaLatestItemModel(mEventBus);
+
+        mEventBus.register(this);
+    }
+
+    @After
+    public void tearDown() {
+        mEventBus.unregister(this);
     }
 
     @Before
     public void pauseLooper() {
         Robolectric.getBackgroundThreadScheduler().pause();
         Robolectric.getForegroundThreadScheduler().pause();
+    }
+
+    @SuppressWarnings("unused")
+    public void onEvent(QiitaLatestItemModel.LoadedEvent event) {
+        mEventReceived ++;
     }
 
     private void Load() {
@@ -46,6 +66,11 @@ public class QiitaLatestItemModelTest {
         Robolectric.flushForegroundThreadScheduler();
     }
 
+    private void shouldReceiveLoadedEvent() {
+        assertEquals(1, mEventReceived);
+    }
+
+
 // %%
 
 //
@@ -53,14 +78,17 @@ public class QiitaLatestItemModelTest {
 //
 
     @Test
-    public void test_BusyStateFalse_Load_BusyStateTrue_FlushBackgroundTasks_FlushForegroundTasks_BusyStateFalse() {
+    public void test_BusyStateFalse_Load_BusyStateTrue_FlushBackgroundTasks_FlushForegroundTasks_BusyStateFalse_shouldReceiveLoadedEvent() {
         BusyStateFalse();
         Load();
         BusyStateTrue();
         FlushBackgroundTasks();
         FlushForegroundTasks();
         BusyStateFalse();
+        shouldReceiveLoadedEvent();
     }
+
+
 
     private interface Actions {
         void BusyStateFalse();
@@ -68,5 +96,6 @@ public class QiitaLatestItemModelTest {
         void BusyStateTrue();
         void FlushBackgroundTasks();
         void FlushForegroundTasks();
+        void shouldReceiveLoadedEvent();
     }
 }

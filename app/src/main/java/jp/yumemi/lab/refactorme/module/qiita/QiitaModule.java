@@ -1,5 +1,6 @@
 package jp.yumemi.lab.refactorme.module.qiita;
 
+import de.greenrobot.event.EventBus;
 import jp.yumemi.lab.refactorme.base.FragmentRouter;
 import jp.yumemi.lab.refactorme.base.ModelContainer;
 import jp.yumemi.lab.refactorme.base.Module;
@@ -18,8 +19,10 @@ public class QiitaModule implements Module {
 
     @Override
     public void onLoad() {
+        EventBus eventBus = EventBus.getDefault();
+
         // ModelManager に各モデルInstanceを登録
-        ModelContainer.register(ModelTag.QIITA_ITEM, new QiitaLatestItemModel());
+        ModelContainer.register(ModelTag.QIITA_ITEM, new QiitaLatestItemModel(eventBus));
 
         // FragmentManager に各Fragmentのクラス名を登録(ここではインスタンス化しない)
         FragmentRouter.instance.register(FragmentTag.MENU, MenuFragment.class);
