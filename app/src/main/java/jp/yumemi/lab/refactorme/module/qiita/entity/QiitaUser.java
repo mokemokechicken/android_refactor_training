@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName;
 public class QiitaUser {
 
     @SerializedName("id")
-    public int id;
+    public String id;
 
-    @SerializedName("url_name")
-    public String urlName;
+    @SerializedName("name")
+    public String name;
 
     @SerializedName("profile_image_url")
     public String profileImageUrl;

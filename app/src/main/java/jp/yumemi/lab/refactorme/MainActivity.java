@@ -17,7 +17,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
             // TODO: Moduleに決めさせるべきかもしれない
-            FragmentRouter.instance.replace(getSupportFragmentManager(), R.id.container, FragmentTag.LIST, null, Animation.NON, false);
+            FragmentRouter.instance.replace(getSupportFragmentManager(), R.id.container, FragmentTag.MENU, null, Animation.NON, false);
         }
     }
 
