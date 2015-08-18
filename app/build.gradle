@@ -26,7 +26,16 @@ android {
         }
 
         staging {
-            buildConfigField "String", "QIITA_API_KEY", "\"My StagingApiKey\""
+            // Training2 (C)の解答例：
+            // 環境変数の有無で buildConfigField の値を変更することができます
+            // Try on Terminal:
+            // % QIITA_API_KEY="Dynamic APIKey" ./gradlew installStagingDebug
+            def apiKey = System.getenv("QIITA_API_KEY");
+            if (apiKey == null) {
+                buildConfigField "String", "QIITA_API_KEY", "\"My StagingApiKey\""
+            } else {
+                buildConfigField "String", "QIITA_API_KEY", '"' + apiKey + '"'
+            }
         }
 
         production {
