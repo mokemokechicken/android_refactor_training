@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.greenrobot.event.EventBus;
+import jp.yumemi.lab.refactorme.Config;
 import jp.yumemi.lab.refactorme.module.qiita.api.ApiManager;
 import jp.yumemi.lab.refactorme.module.qiita.entity.QiitaItem;
 
@@ -37,7 +38,7 @@ public class QiitaLatestItemModel {
         new AsyncTask<Void, Void, List<QiitaItem>>() {
             @Override
             protected List<QiitaItem> doInBackground(Void... voids) {
-                return ApiManager.getService().getItems(10);
+                return ApiManager.getService().getItems(Config.getDisplayItemCount());
             }
 
             @Override
