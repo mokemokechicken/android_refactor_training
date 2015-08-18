@@ -4,7 +4,7 @@ import jp.yumemi.lab.refactorme.base.FragmentRouter;
 import jp.yumemi.lab.refactorme.base.ModelContainer;
 import jp.yumemi.lab.refactorme.base.Module;
 import jp.yumemi.lab.refactorme.module.qiita.model.ModelTag;
-import jp.yumemi.lab.refactorme.module.qiita.model.QiitaItemModel;
+import jp.yumemi.lab.refactorme.module.qiita.model.QiitaLatestItemModel;
 import jp.yumemi.lab.refactorme.module.qiita.presentation.AndroidItemFragment;
 import jp.yumemi.lab.refactorme.module.qiita.presentation.DetailFragment;
 import jp.yumemi.lab.refactorme.module.qiita.presentation.FragmentTag;
@@ -19,7 +19,7 @@ public class QiitaModule implements Module {
     @Override
     public void onLoad() {
         // ModelManager に各モデルInstanceを登録
-        ModelContainer.register(ModelTag.QIITA_ITEM, new QiitaItemModel());
+        ModelContainer.register(ModelTag.QIITA_ITEM, new QiitaLatestItemModel());
 
         // FragmentManager に各Fragmentのクラス名を登録(ここではインスタンス化しない)
         FragmentRouter.instance.register(FragmentTag.MENU, MenuFragment.class);

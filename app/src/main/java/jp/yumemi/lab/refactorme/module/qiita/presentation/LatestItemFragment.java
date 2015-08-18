@@ -22,7 +22,7 @@ import jp.yumemi.lab.refactorme.base.FragmentRouter;
 import jp.yumemi.lab.refactorme.base.ModelContainer;
 import jp.yumemi.lab.refactorme.module.qiita.entity.QiitaItem;
 import jp.yumemi.lab.refactorme.module.qiita.model.ModelTag;
-import jp.yumemi.lab.refactorme.module.qiita.model.QiitaItemModel;
+import jp.yumemi.lab.refactorme.module.qiita.model.QiitaLatestItemModel;
 
 public class LatestItemFragment extends Fragment {
 
@@ -59,7 +59,7 @@ public class LatestItemFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        ((QiitaItemModel) ModelContainer.get(ModelTag.QIITA_ITEM)).load();
+        ((QiitaLatestItemModel) ModelContainer.get(ModelTag.QIITA_ITEM)).load();
         updateView();
     }
 
@@ -92,7 +92,7 @@ public class LatestItemFragment extends Fragment {
 
     // EventBus からの通知
     @SuppressWarnings("unused")
-    public void onEventMainThread(QiitaItemModel.LoadedEvent event) {
+    public void onEventMainThread(QiitaLatestItemModel.LoadedEvent event) {
         if (event.isSuccess()) {
             updateView();
         }
@@ -101,9 +101,9 @@ public class LatestItemFragment extends Fragment {
     // Viewの表示を更新するプライベートメソッド
     private void updateView() {
         // ここでは通信が伴うような時間がかかる処理はしない。Model上の変数をアクセスするに留める
-        mItemCountTextView.setText(((QiitaItemModel) ModelContainer.get(ModelTag.QIITA_ITEM)).getItemCount() + " 件");
+        mItemCountTextView.setText(((QiitaLatestItemModel) ModelContainer.get(ModelTag.QIITA_ITEM)).getItemCount() + " 件");
         mQiitaItemList.clear();
-        mQiitaItemList.addAll(((QiitaItemModel) ModelContainer.get(ModelTag.QIITA_ITEM)).getItemList());
+        mQiitaItemList.addAll(((QiitaLatestItemModel) ModelContainer.get(ModelTag.QIITA_ITEM)).getItemList());
         mQiitaItemListAdapter.notifyDataSetChanged();
     }
 }

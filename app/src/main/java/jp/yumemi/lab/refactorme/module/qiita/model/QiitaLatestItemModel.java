@@ -9,13 +9,13 @@ import de.greenrobot.event.EventBus;
 import jp.yumemi.lab.refactorme.module.qiita.api.ApiManager;
 import jp.yumemi.lab.refactorme.module.qiita.entity.QiitaItem;
 
-public class QiitaItemModel {
+public class QiitaLatestItemModel {
 
     private final List<QiitaItem> mQiitaItemList = new ArrayList<>();
     private int mItemCount = 0;
     private boolean mIsBusy = false;
 
-    public QiitaItemModel() {
+    public QiitaLatestItemModel() {
     }
 
     public List<QiitaItem> getItemList() {

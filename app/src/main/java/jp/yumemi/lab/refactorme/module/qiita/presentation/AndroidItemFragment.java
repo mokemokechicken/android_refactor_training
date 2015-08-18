@@ -76,7 +76,6 @@ public class AndroidItemFragment extends Fragment {
                 mQiitaItemListAdapter.notifyDataSetChanged();
             }
         }.execute();
-
     }
 
     @Override
