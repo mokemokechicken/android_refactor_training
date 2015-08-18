@@ -34,14 +34,6 @@ public class AndroidItemFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //if (getArguments() != null) {
-        //    //引数があれば受け取り
-        //}
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
@@ -61,8 +53,8 @@ public class AndroidItemFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onStart() {
+        super.onStart();
 
         // 非同期で API を発行
         new AsyncTask<Void, Void, List<QiitaItem>>() {
