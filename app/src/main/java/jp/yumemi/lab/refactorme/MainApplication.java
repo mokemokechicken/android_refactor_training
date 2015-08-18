@@ -17,9 +17,6 @@ public class MainApplication extends Application {
 
         // 必要なら ModuleManager.add(new QiitaModule()) みたいにした方が良いだろう。
         new QiitaModule().onLoad();
-        jp.yumemi.lab.refactorme.base.FragmentTag Tag = FragmentTag.DETAIL;
-        Log.d("TEST", Tag.getClass().getCanonicalName() + Tag.toString());
-        Log.d("TEST", Tag.getClass().getName());
     }
 
     @Override
