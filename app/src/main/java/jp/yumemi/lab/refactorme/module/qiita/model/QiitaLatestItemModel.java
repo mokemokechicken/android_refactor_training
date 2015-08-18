@@ -37,7 +37,7 @@ public class QiitaLatestItemModel {
         new AsyncTask<Void, Void, List<QiitaItem>>() {
             @Override
             protected List<QiitaItem> doInBackground(Void... voids) {
-                return ApiManager.getService().getItems();
+                return ApiManager.getService().getItems(10);
             }
 
             @Override
