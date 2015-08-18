@@ -54,8 +54,6 @@ QiitaLatestItemModelで表示件数を以下のように直接指定していま
 
 branchの answer/training2 の各Commitをみてください。
 
-```
-git show <commit id>
-```
-
-とかでその部分だけ見れます。
+* [(A)の解答例](https://github.com/mokemokechicken/android_refactor_training/commit/8c0a923109f2850f9c7b66de396eea69de71c833)
+* [(B))の解答例](https://github.com/mokemokechicken/android_refactor_training/commit/945fde1810f12667ceb4c456e959d1f4d2a02253)
+* [(C))の解答例](https://github.com/mokemokechicken/android_refactor_training/commit/0e5b5196ae5709608064bb1e84e6b807473949cd)
