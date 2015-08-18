@@ -5,6 +5,7 @@ Android Refactoring課題
 に近づくための、Androidの実装でよくリファクタリング対象になるケースを集めました。
 
 * 課題１： [Presentation層の非同期イベントとデータ管理](doc/example_1.md)
+* 課題２： [環境やConfiguration別のBuildをソースを書き換えないで行う](doc/example_2.md)
 
 謝辞
 ==========

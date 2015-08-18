@@ -17,6 +17,7 @@ public class MainApplication extends Application {
 
         // 必要なら ModuleManager.add(new QiitaModule()) みたいにした方が良いだろう。
         new QiitaModule().onLoad();
+
     }
 
     @Override
