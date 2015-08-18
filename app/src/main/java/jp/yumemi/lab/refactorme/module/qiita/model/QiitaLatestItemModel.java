@@ -26,6 +26,10 @@ public class QiitaLatestItemModel {
         return mItemCount;
     }
 
+    public boolean isBusy() {
+        return mIsBusy;
+    }
+
     public void load() {
         // ビジー状態なら何もしない
         if (mIsBusy) {
