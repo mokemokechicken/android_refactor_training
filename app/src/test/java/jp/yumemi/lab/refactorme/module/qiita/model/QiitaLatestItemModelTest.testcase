@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+import os
+import sys
+import unittest
+from testcase_generator.state_map import StateMap
+from testcase_generator.state_map import State
+from testcase_generator.utils import sequential_combinations as SEQ
+from testcase_generator.utils import parallel_combinations as PARA
+
+TESTCASE_DEF['class_name'] = 'QiitaLatestItemModelTest'
+
+TESTCASE_DEF['data'] = SEQ(
+    [
+        ['Load', 'andFlushTasks', 'shouldReceiveLoadedEvent'],
+    ]
+)

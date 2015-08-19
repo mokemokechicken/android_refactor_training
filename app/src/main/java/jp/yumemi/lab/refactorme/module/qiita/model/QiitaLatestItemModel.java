@@ -11,11 +11,13 @@ import jp.yumemi.lab.refactorme.module.qiita.entity.QiitaItem;
 
 public class QiitaLatestItemModel {
 
+    private final EventBus mEventBus;
     private final List<QiitaItem> mQiitaItemList = new ArrayList<>();
     private int mItemCount = 0;
     private boolean mIsBusy = false;
 
-    public QiitaLatestItemModel() {
+    public QiitaLatestItemModel(EventBus eventBus) {
+        mEventBus = eventBus;
     }
 
     public List<QiitaItem> getItemList() {
@@ -24,6 +26,10 @@ public class QiitaLatestItemModel {
 
     public int getItemCount() {
         return mItemCount;
+    }
+
+    public boolean isBusy() {
+        return mIsBusy;
     }
 
     public void load() {
@@ -51,7 +57,7 @@ public class QiitaLatestItemModel {
                 // ビジー状態を解除
                 mIsBusy = false;
                 // EventBus で完了通知を送る
-                EventBus.getDefault().post(new LoadedEvent(true));
+                mEventBus.post(new LoadedEvent(true));
             }
         }.execute();
     }
